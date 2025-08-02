@@ -6,6 +6,7 @@ def perform_math():
     previous = ''
 
     print("Welcome to the calculator.")
+    print("Type 'clear' to clear previous calculation.")
     print("Type 'quit' to exit.")
 
     while run:
@@ -16,8 +17,16 @@ def perform_math():
 
         if equation == "quit":
             run = False
+        elif equation == "clear":
+            previous = ''
+            print("You cleared the previous calculation.")
+            continue
         else:
             equation = re.sub('[a-zA-Z,:()" "]', '', equation)
+
+            if len(equation)>0 and equation[0] == '.':
+                equation = equation[1:]
+
             if equation == '':
                 print("You typed: ", equation)
             else:
