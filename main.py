@@ -22,7 +22,10 @@ def perform_math():
             print("You cleared the previous calculation.")
             continue
         else:
-            equation = re.sub('[a-zA-Z,:()" "]', '', equation)
+            if previous == '':
+               equation =  re.sub('[a-zA-Z,:()" "/*]', '', equation)
+            else:
+                equation = re.sub('[a-zA-Z,:()" "]', '', equation)
 
             if len(equation)>0 and equation[0] == '.':
                 equation = equation[1:]
