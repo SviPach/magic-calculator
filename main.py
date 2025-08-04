@@ -1,3 +1,10 @@
+'''
+    Program: Magical Calculator
+    Author: Sviatoslav Balema
+    Copyright: 2025
+'''
+
+
 import re
 
 def perform_math():
@@ -10,26 +17,32 @@ def perform_math():
     print("Type 'quit' to exit.")
 
     while run:
+        # If there has been a previous calculation:
         if previous == '':
             equation = input("Starting with: ")
         else:
             equation = input(f"{str(previous)}")
 
+        # If user quits:
         if equation == "quit":
             run = False
+        # If user clears the previous calculation:
         elif equation == "clear":
             previous = ''
             print("You cleared the previous calculation.")
             continue
         else:
+            # Cleaning the input string:
             if previous == '':
-               equation =  re.sub('[a-zA-Z,:()" "/*]', '', equation)
+                equation =  re.sub('[a-zA-Z,:()" "/*]', '', equation)
             else:
                 equation = re.sub('[a-zA-Z,:()" "]', '', equation)
 
+            # Deleting "." if it's a first symbol:
             if len(equation)>0 and equation[0] == '.':
                 equation = equation[1:]
 
+            # Printing the result:
             if equation == '':
                 print("You typed: ", equation)
             else:
